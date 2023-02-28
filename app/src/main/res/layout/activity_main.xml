@@ -6,12 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<!--<com.example.customview.counter_game.CounterView-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"/>-->
-    <com.example.customview.switcher.DialView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        custom:offColor="@color/black"
-        custom:onColor="@color/purple_200"/>
+    <Button
+        android:id="@+id/operationsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/increase_text"
+        custom:layout_constraintEnd_toEndOf="parent"
+        custom:layout_constraintStart_toStartOf="parent"
+        custom:layout_constraintTop_toTopOf="parent" />
+
+    <com.example.customview.operations_counter.OperationsCounterView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        custom:layout_constraintEnd_toEndOf="parent"
+        custom:layout_constraintStart_toStartOf="parent"
+        custom:layout_constraintTop_toBottomOf="@+id/operationsButton"
+        custom:startValue="0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
