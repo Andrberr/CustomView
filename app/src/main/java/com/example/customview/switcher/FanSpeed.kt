@@ -1,4 +1,6 @@
-package com.example.customview
+package com.example.customview.switcher
+
+import com.example.customview.R
 
 enum class FanSpeed(val label: Int) {
     OFF(R.string.fan_off),

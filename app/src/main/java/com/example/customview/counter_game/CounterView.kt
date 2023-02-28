@@ -1,4 +1,4 @@
-package com.example.customview
+package com.example.customview.counter_game
 
 import android.content.Context
 import android.graphics.*

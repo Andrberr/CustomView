@@ -1,4 +1,4 @@
-package com.example.customview
+package com.example.customview.counter_game
 
 class FanCounter() {
     companion object{
