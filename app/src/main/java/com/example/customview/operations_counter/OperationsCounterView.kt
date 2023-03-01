@@ -15,9 +15,9 @@ class OperationsCounterView @JvmOverloads constructor(
 ) : View(context, attrs, defStyleAttr) {
 
     companion object {
-        private const val radiusIncrease = 50
-        private const val yellowValue = 11
-        private const val redValue = 21
+        private const val RADIUS_INCREASE = 50
+        private const val YELLOW_VALUE = 11
+        private const val RED_VALUE = 21
     }
 
     private var radius = 0.0f
@@ -30,7 +30,7 @@ class OperationsCounterView @JvmOverloads constructor(
         typeface = Typeface.create("", Typeface.BOLD)
     }
 
-    private var mode = MainActivity.mode
+    private var mode: Boolean
 
     init {
         isClickable = true
@@ -41,25 +41,29 @@ class OperationsCounterView @JvmOverloads constructor(
         ).apply {
             try {
                 operationsCounter.counter = getInteger(R.styleable.OperationsCounterView_startValue, 0)
+                mode = getBoolean(R.styleable.OperationsCounterView_mode, true)
             } finally {
                 recycle()
             }
         }
     }
 
+    fun setMode(){
+        mode = !mode
+    }
+
     override fun performClick(): Boolean {
         if (super.performClick()) return true
 
-        mode = MainActivity.mode
         if (mode) operationsCounter.next()
         else operationsCounter.prev()
         contentDescription = operationsCounter.counter.toString()
 
-        if (mode && operationsCounter.counter == yellowValue) radius += radiusIncrease
-        else if (!mode && operationsCounter.counter == yellowValue - 1) radius -= radiusIncrease
+        if (mode && operationsCounter.counter == YELLOW_VALUE) radius += RADIUS_INCREASE
+        else if (!mode && operationsCounter.counter == YELLOW_VALUE - 1) radius -= RADIUS_INCREASE
 
-        if (mode && operationsCounter.counter == redValue) radius += radiusIncrease
-        else if (!mode && operationsCounter.counter == redValue - 1) radius -= radiusIncrease
+        if (mode && operationsCounter.counter == RED_VALUE) radius += RADIUS_INCREASE
+        else if (!mode && operationsCounter.counter == RED_VALUE - 1) radius -= RADIUS_INCREASE
 
         invalidate()
         return true
@@ -72,9 +76,9 @@ class OperationsCounterView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        if (operationsCounter.counter < yellowValue) {
+        if (operationsCounter.counter < YELLOW_VALUE) {
             paint.color = Color.GREEN
-        } else if (operationsCounter.counter < redValue) {
+        } else if (operationsCounter.counter < RED_VALUE) {
             paint.color = Color.YELLOW
         } else {
             paint.color = Color.RED
