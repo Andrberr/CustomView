@@ -4,4 +4,6 @@
     <string name="fan_low">1</string>
     <string name="fan_medium">2</string>
     <string name="fan_high">3</string>
+    <string name="increase_text">Increasing Mode</string>
+    <string name="decrease_text">Decreasing Mode</string>
 </resources>

@@ -4,4 +4,9 @@
         <attr name="offColor" format="color" />
         <attr name="onColor" format="color"/>
     </declare-styleable>
+
+    <declare-styleable name="OperationsCounterView">
+        <attr name="mode" format="boolean" />
+        <attr name="startValue" format="integer" />
+    </declare-styleable>
 </resources>
